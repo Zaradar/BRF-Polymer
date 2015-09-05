@@ -39,7 +39,6 @@ Create a file named `foo-element.html` in the `public` folder, and give it the f
     });
   </script>
 </dom-module>
-
 ```
 
 ### Creating a constructor
