@@ -4,7 +4,7 @@
 
 Create a `bower.json` file.
 
-```
+```sh
 > bower init
 ```
 
