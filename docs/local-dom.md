@@ -2,7 +2,7 @@
 
 The template tag inside the dom-module tag is automatically _stamped out_ when a new element is created.
 
-```
+```html
 <dom-module id="foo-element">
   <template>
   	<h1> Foo Element</h1>
@@ -31,7 +31,7 @@ The Light DOM is the DOM tree inside the element tag.
 
 Elements with an _id_ inside the local DOM can be found via the `$` hash.
 
-```
+```html
 <dom-module id="foo-element">
   <template>
   	<h1 id="header"></h1>
@@ -51,7 +51,7 @@ Elements with an _id_ inside the local DOM can be found via the `$` hash.
 
 Elements inside the local DOM can be selected via the `$$` method. The method takes a CSS selector string as the only argument, and returns the first element that matches the selector.
 
-```
+```html
 <dom-module id="foo-element">
   <template>
   	<h1></h1>
@@ -71,7 +71,7 @@ Elements inside the local DOM can be selected via the `$$` method. The method ta
 
 Content from inside the element can be inserted inside the local DOM via the _content_ tag.
 
-```
+```html
 <template>
   <h1>
     <content></content>
@@ -79,7 +79,7 @@ Content from inside the element can be inserted inside the local DOM via the _co
 </template>
 ```
 
-```
+```html
 <foo-element>
   <span>Foo</span>
   <span>Bar</span>
@@ -88,7 +88,7 @@ Content from inside the element can be inserted inside the local DOM via the _co
 
 Special content can be selected via the _select_ attribute.
 
-```
+```html
 <template>
   <h1>
     <content select=".header"></content>
@@ -99,7 +99,7 @@ Special content can be selected via the _select_ attribute.
 </template>
 ```
 
-```
+```html
 <foo-element>
   <span class="header">Foo</span>
   <span>Bar</span>
@@ -112,13 +112,13 @@ To maintain the proper separation between the Shadow DOM and the Light DOM it is
 
 These methods is mimicking the normal DOM API as seen in the following examples.
 
-```
+```javascript
 parent.appendChild(child);
 // ->
 Polymer.dom(parent).appendChild(child);
 ```
 
-```
+```javascript
 parent.insertBefore(child, before);
 // ->
 Polymer.dom(parent).insertBefore(child, before);
@@ -126,7 +126,7 @@ Polymer.dom(parent).insertBefore(child, before);
 
 To reference the Light DOM use `this` and to reference the Shadow DOM use `this.root`.
 
-```
+```javascript
 <dom-module id="foo-element">
   <template>
     <h1>

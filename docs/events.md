@@ -50,10 +50,10 @@ Polymer fires a custom _gesture_ events for certain user interactions automatica
 
 The following are the gesture event types supported.
 
-- down
-- up
-- tap
-- track
+- _down_
+- _up_
+- _tap_
+- _track_
 
 ## Event Retargeting
 
@@ -63,7 +63,7 @@ To normalise the event (equivalent target data on both Shady DOM and Shadow DOM)
 
 The normalised event has the following properties.
 
-- rootTarget: The original or root target before shadow retargeting.
-- localTarget: Retargeted event target.
-- path: Array of nodes through which event will pass.
+- _rootTarget_: The original or root target before shadow retargeting.
+- _localTarget_: Retargeted event target.
+- _path_: Array of nodes through which event will pass.
 
