@@ -4,7 +4,7 @@
 
 Called once the element is created.
 
-```
+```javascript
 Polymer({
   is: 'foo-element',
   created: function () {
@@ -17,7 +17,7 @@ Polymer({
 
 Called every time the element is (re)attached to the DOM tree.
 
-```
+```javascript
 Polymer({
   is: 'foo-element',
   attached: function () {
@@ -30,7 +30,7 @@ Polymer({
 
 Called every time the element is detached from the DOM tree.
 
-```
+```javascript
 Polymer({
   is: 'foo-element',
   detached: function () {
@@ -41,9 +41,11 @@ Polymer({
 
 ## attributeChanged
 
-Called every time an attribute is added, removed, or changed. The callback is called with three arguments - attribute name, old attribute value, and new attribute value.
+Called every time an attribute is added, removed, or changed.
+The callback is called with three arguments - attribute name,
+old attribute value, and new attribute value.
 
-```
+```javascript
 Polymer({
   is: 'foo-element',
   attributeChanged: function (name, oldValue, newValue) {
@@ -56,7 +58,7 @@ Polymer({
 
 Called once the element's local DOM is ready.
 
-```
+```javascript
 Polymer({
   is: 'foo-element',
   ready: function () {
@@ -64,4 +66,3 @@ Polymer({
   }
 });
 ```
-
