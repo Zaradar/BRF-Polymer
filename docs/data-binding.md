@@ -2,6 +2,8 @@
 
 ## One-Way Binding
 
+Polymer supports one-way binding in the template via the _[[\<name\>]]_ syntax. The context for the resolving of the binding is the element.
+
 ```html
 <dom-module id="foo-element">
   <template>
@@ -27,6 +29,8 @@
 
 ## Auto-binding
 
+
+
 ```html
 <body>
   <template is="dom-bind">
@@ -43,6 +47,8 @@
 
 ## Two-Way Binding
 
+Polymer also supports two-way binding in the template via the _{{\<name\>}}_ syntax.
+
 To enable two-way data binding for a property it will have to _notify_ when it changes.
 
 ```javascript
@@ -57,7 +63,7 @@ properties: {
 
 And then it is possible to _bind_ two or more properties together.
 
-```
+```html
 <template is="dom-bind">
   <foo-element bar="{{bar}}"></foo-element>
   <foo-element bar="{{bar}}"></foo-element>
@@ -68,7 +74,7 @@ And then it is possible to _bind_ two or more properties together.
 
 To bind to native properties it is necessary to provide the event that is fired when the property changes.
 
-```
+```html
 <template>
   <div class="bar">[[bar]]</div>
   <button on-tap="step">Step</button>
@@ -80,7 +86,7 @@ To bind to native properties it is necessary to provide the event that is fired 
 
 It is possible to bind to sub-properties by specifying a path inside the binding annotation.
 
-```
+```html
 <dom-module id="foo-element">
   <template>
     <div>
@@ -109,7 +115,7 @@ It is possible to bind to sub-properties by specifying a path inside the binding
 
 Computed bindings is much like _computed properties_.
 
-```
+```html
 <dom-module id="foo-element">
   <template>
     <div>{{fullName(firstName, lastName)}}</div>
@@ -135,7 +141,7 @@ Computed bindings is much like _computed properties_.
 
 If the computed binding has no dependencies the binding is computed only once.
 
-```
+```html
 <dom-module id="foo-element">
   <template>
     <div>{{time()}}</div>
@@ -153,7 +159,9 @@ If the computed binding has no dependencies the binding is computed only once.
 
 ## Repeat Templates
 
-```
+Polymer supports a repeating template. For every item in the _items_ a new instance of the template is created.
+
+```html
 <dom-module id="foo-element">
   <template>
     <ul>
@@ -180,7 +188,9 @@ If the computed binding has no dependencies the binding is computed only once.
 </dom-module>
 ```
 
-```
+Events _targeting_ elements inside the repeat template contains a context like the one present when the template instance was created. The context is the property _model_. If the _item_ is changed via the _model_'s _set_ method data binding will work.
+
+```html
 <dom-module id="foo-element">
   <template>
     <ul>
@@ -217,7 +227,9 @@ If the computed binding has no dependencies the binding is computed only once.
 
 ## Conditional Templates
 
-```
+Polymer has a conditional template that renders depending on whether or not a value is falsy.
+
+```html
 <dom-module id="foo-element">
   <template>
     <input type="checkbox" checked="{{show::change}}"/>
