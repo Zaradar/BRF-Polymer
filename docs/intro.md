@@ -4,13 +4,13 @@
 
 Create a `bower.json` file.
 
-```sh
+```
 > bower init
 ```
 
 Tell bower where you want your components installed by creating a file named `.bowerrc` with a content like this.
 
-```
+```json
 {
   "directory": "public/components"
 }
@@ -26,7 +26,7 @@ Add Polymer as a dependency.
 
 Create a file named `foo-element.html` in the `public` folder, and give it the following content.
 
-```
+```html
 <link rel="import" href="components/polymer/polymer.html">
 <dom-module id="foo-element">
   <style>
@@ -45,7 +45,7 @@ Create a file named `foo-element.html` in the `public` folder, and give it the f
 
 The `Polymer` function will return a constructor for the newly registered element. Script tags inside the `dom-module` tag will be executed in global scoop (like all other script tags) - so we can save a reference to the constructor like this.
 
-```
+```html
 <script>
   var FooElement = Polymer({
     is: 'foo-element'
@@ -57,7 +57,7 @@ The `Polymer` function will return a constructor for the newly registered elemen
 
 Sometimes it is convenient to pass arguments to an elements constructor. This can be done by implementing the `factoryImpl` method.
 
-```
+```javascript
 var FooElement = Polymer({
   is: 'foo-element',
   factoryImpl: function(bar) {
@@ -70,7 +70,7 @@ var FooElement = Polymer({
 
 Create a `index.html` file in the `public` folder, and give it the following content.
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +95,7 @@ Create a `index.html` file in the `public` folder, and give it the following con
 
 A native element is extended by setting the `extends` property on the prototype.
 
-```
+```javascript
 Polymer({
   is: 'foo-input',
   extends: 'input'
@@ -105,11 +105,11 @@ Polymer({
 
 To use the extended version of the element set the `is` attribute on the element.
 
-```
+```html
 <input is="foo-input">
 ```
 or create the element in JavaScript via the DOM API.
 
-```
+```javascript
 var foo = window.document.createElement('input', 'foo-input');
 ```
