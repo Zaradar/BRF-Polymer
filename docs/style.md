@@ -6,7 +6,7 @@ Shadow DOM is still a very new technology and not all evergreen browsers impleme
 
 Shady DOM is the default, but Shadow DOM can be enabled by setting a flag i JavaScript
 
-```
+```html
 <script src="components/webcomponentsjs/webcomponents-lite.js"></script>
 <script>
   window.Polymer = window.Polymer || {};
@@ -49,7 +49,7 @@ Local styling is done in a _style_ tag inside the _dom-module_ tag. The host ele
 
 Normal styling rules inside the _style_ tag only applies to the Shadow DOM elements.
 
-```
+```html
 <style>
   :host {
     border: solid 1px black;
@@ -63,7 +63,7 @@ Normal styling rules inside the _style_ tag only applies to the Shadow DOM eleme
 
 When it comes to styling the content inserted via the _content_ tag there is a difference between the Shadow DOM and the (default) Shady DOM. Given the following setup.
 
-```
+```html
 <style>
   :host {
     display: block;
@@ -74,14 +74,14 @@ When it comes to styling the content inserted via the _content_ tag there is a d
 </style>
 ```
 
-```
+```html
 <template>
   <content></content>
   <span>Baz</span>
 </template>
 ```
 
-```
+```html
 <foo-element>
   <span>Foo</span>
   <span>Bar</span>
@@ -92,7 +92,7 @@ Shady DOM will render all _span_ tags in a blue  color while Shadow DOM will ren
 
 The recommended solution is to wrap the _content_ tag like this.
 
-```
+```html
 <style>
   :host {
     display: block;
@@ -103,7 +103,7 @@ The recommended solution is to wrap the _content_ tag like this.
 </style>
 ```
 
-```
+```html
 <template>
   <span class="content"><content></content></span>
   <span>Baz</span>
@@ -114,7 +114,7 @@ The recommended solution is to wrap the _content_ tag like this.
 
 Under the Shady DOM styling from the main document will _leak_ into the Polymer elements. To prevent this, styling can be placed in a _style_ tag that is extended with _custom-style_.
 
-```
+```html
 <head>
   <meta charset="UTF-8">
   <title>Intro</title>
@@ -135,7 +135,7 @@ To make it easier to customise elements Polymer supports CSS Variables.
 
 First the CSS variable will be _consumed_ inside an element.
 
-```
+```html
 <style>
   span {
     color: var(--foo-element-color);
@@ -145,7 +145,7 @@ First the CSS variable will be _consumed_ inside an element.
 
 And then the CSS variable can be given a value outside of the element.
 
-```
+```html
 <style is="custom-style">
   foo-element {
     --foo-element-color: blue;
@@ -155,7 +155,7 @@ And then the CSS variable can be given a value outside of the element.
 
 Variables can be given a default value.
 
-```
+```css
 color: var(--foo-element-color, green);
 ```
 
@@ -165,7 +165,7 @@ In addition to CSS variables there is a mix-in feature that makes it possible to
 
 First the mix-in will be applied inside an element.
 
-```
+```html
 <style>
   span {
     @apply(--foo-element-theme);
@@ -175,7 +175,7 @@ First the mix-in will be applied inside an element.
 
 And then the mix-in can be given some values outside of the element.
 
-```
+```html
 <style is="custom-style">
   foo-element {
     --foo-element-theme: {
@@ -192,7 +192,7 @@ It is possible to share style across multiple elements.
 
 First the shared style must be defined inside a _dom-module_ _template_.
 
-```
+```html
 <link rel="import" href="components/polymer/polymer.html">
 <dom-module id="foo-shared-styles">
   <template>
@@ -207,7 +207,7 @@ First the shared style must be defined inside a _dom-module_ _template_.
 
 And then the styles must be included into another element.
 
-```
+```html
 <link rel="import" href="components/polymer/polymer.html">
 <link rel="import" href="foo-shared-styles.html">
 <dom-module id="foo-element">
@@ -225,7 +225,7 @@ And then the styles must be included into another element.
 
 The same _style_ tag can both _include_ and _define_ styles.
 
-```
+```html
 <style include="foo-shared-styles">
   span {
     background-color: yellow;
@@ -235,11 +235,10 @@ The same _style_ tag can both _include_ and _define_ styles.
 
 Shared styles can also be included outside of elements in _style_ tags extended by _custom-style_.
 
-```
+```html
 <style is="custom-style" include="foo-shared-styles">
   span {
     background-color: yellow;
   }
 </style>
 ```
-
