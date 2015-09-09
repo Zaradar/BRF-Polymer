@@ -1,0 +1,33 @@
+<link rel="import" href="components/polymer/polymer.html">
+<dom-module id="foo-element">
+  <style>
+    div {
+      font-family: sans-serif;
+      font-size: 40px;
+    }
+  </style>
+  <template>
+    <div>Foo</div>
+  </template>
+  <script>
+    FooElement = Polymer({
+      is: 'foo-element',
+      created: function () {
+        this.bar = 5;
+        console.log('Created!', this);
+      },
+      attached: function () {
+        console.log('Attached!', this);
+      },
+      detached: function () {
+        console.log('Detached!', this);
+      },
+      attributeChanged: function (name, oldValue, newValue) {
+        console.log(name, oldValue, newValue);
+      },
+      ready: function () {
+        console.log('Ready!');
+      }
+    });
+  </script>
+</dom-module>
